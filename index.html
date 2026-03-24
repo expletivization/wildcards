@@ -366,6 +366,18 @@
     margin: 32px 0;
   }
 
+  .io-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .btn-io {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.3px;
+  }
+
   /* Responsive */
   @media (max-width: 600px) {
     .app { padding: 24px 16px 60px; }
@@ -402,6 +414,13 @@
         Type a template above with <code>[bracketed]</code> wildcards to get started.
       </div>
     </div>
+  </div>
+
+  <!-- Import / Export -->
+  <div class="io-row">
+    <button class="btn btn-sm btn-io" onclick="exportConfig()">↗ Export Config</button>
+    <button class="btn btn-sm btn-io" onclick="importConfig()">↙ Import Config</button>
+    <input type="file" id="import-file" accept=".wcb" style="display:none">
   </div>
 
   <div class="divider"></div>
@@ -657,6 +676,64 @@
     if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && !generateBtn.disabled) {
       generate();
     }
+  });
+
+  // Export: JSON → base64 → .wcb file download
+  function exportConfig() {
+    const data = {
+      _wcb: 1,
+      template: templateEl.value,
+      wildcards: {}
+    };
+    for (const name of currentWildcards) {
+      data.wildcards[name.toLowerCase()] = wildcardOptions[name.toLowerCase()] || '';
+    }
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+    const blob = new Blob([encoded], { type: 'application/octet-stream' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'prompt-config.wcb';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // Import: .wcb file → base64 decode → restore state
+  const importFileEl = document.getElementById('import-file');
+
+  function importConfig() {
+    importFileEl.value = '';
+    importFileEl.click();
+  }
+
+  importFileEl.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const decoded = decodeURIComponent(escape(atob(reader.result.trim())));
+        const data = JSON.parse(decoded);
+        if (!data._wcb) throw new Error('Not a valid config');
+
+        // Restore template
+        templateEl.value = data.template || '';
+
+        // Restore wildcard options
+        wildcardOptions = {};
+        if (data.wildcards) {
+          for (const [key, val] of Object.entries(data.wildcards)) {
+            wildcardOptions[key.toLowerCase()] = val;
+          }
+        }
+
+        // Re-parse and render
+        currentWildcards = parseWildcards(templateEl.value);
+        renderWildcards(currentWildcards);
+      } catch (err) {
+        alert('Could not read this file. Make sure it\'s a valid .wcb config.');
+      }
+    };
+    reader.readAsText(file);
   });
 </script>
 
