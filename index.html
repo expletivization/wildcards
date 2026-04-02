@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,6 +11,7 @@
     --surface: #16171d;
     --surface2: #1e2028;
     --border: #2a2c37;
+    --border-hi: #3d3f4e;
     --text: #e2e4ed;
     --text-dim: #8b8fa3;
     --accent: #f0a030;
@@ -19,295 +19,398 @@
     --accent-glow: #f0a03044;
     --green: #5ce4a0;
     --green-dim: #5ce4a018;
+    --red: #f06050;
     --tag-bg: #f0a03018;
     --tag-border: #f0a03055;
     --radius: 10px;
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-font-family: ‘DM Sans’, sans-serif;
-background: var(–bg);
-color: var(–text);
-min-height: 100vh;
-}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
 
-.app {
-max-width: 860px;
-margin: 0 auto;
-padding: 40px 24px 80px;
-}
+  .app {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
 
-header { margin-bottom: 40px; }
+  header {
+    margin-bottom: 40px;
+  }
 
-header h1 {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 1.5rem;
-font-weight: 700;
-color: var(–accent);
-letter-spacing: -0.5px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
+  header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-header h1 .icon {
-width: 32px; height: 32px;
-background: var(–accent);
-border-radius: 8px;
-display: grid; place-items: center;
-font-size: 16px; color: var(–bg); font-weight: 700;
-}
+  header h1 .icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    color: var(--bg);
+    font-weight: 700;
+  }
 
-header p {
-color: var(–text-dim);
-margin-top: 8px;
-font-size: 0.9rem;
-line-height: 1.5;
-}
+  header p {
+    color: var(--text-dim);
+    margin-top: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 
-.section { margin-bottom: 28px; }
+  .section {
+    margin-bottom: 28px;
+  }
 
-.section-label {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 0.7rem; font-weight: 600;
-text-transform: uppercase; letter-spacing: 1.5px;
-color: var(–text-dim);
-margin-bottom: 10px;
-display: flex; align-items: center; gap: 8px;
-}
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-.section-label .count {
-background: var(–accent-dim);
-color: var(–accent);
-padding: 2px 7px; border-radius: 4px;
-font-size: 0.65rem;
-}
+  .section-label .count {
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+  }
 
-textarea, input[type=“text”] {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 0.88rem;
-background: var(–surface);
-color: var(–text);
-border: 1.5px solid var(–border);
-border-radius: var(–radius);
-padding: 14px 16px;
-width: 100%;
-outline: none;
-transition: border-color 0.2s, box-shadow 0.2s;
-line-height: 1.6;
-}
+  textarea, input[type="text"] {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    line-height: 1.6;
+  }
 
-textarea:focus, input[type=“text”]:focus {
-border-color: var(–accent);
-box-shadow: 0 0 0 3px var(–accent-glow);
-}
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
 
-textarea { min-height: 110px; resize: vertical; }
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
 
-.hint { font-size: 0.78rem; color: var(–text-dim); margin-top: 6px; }
-.hint code {
-background: var(–surface2); padding: 2px 6px; border-radius: 4px;
-font-family: ‘JetBrains Mono’, monospace; font-size: 0.75rem; color: var(–accent);
-}
+  .hint {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
 
-/* Wildcard cards */
-.wildcards-container { display: flex; flex-direction: column; gap: 14px; }
+  .hint code {
+    background: var(--surface2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+  }
 
-.wildcard-card {
-background: var(–surface);
-border: 1.5px solid var(–border);
-border-radius: var(–radius);
-padding: 16px;
-animation: cardIn 0.25s ease-out;
-}
-@keyframes cardIn {
-from { opacity: 0; transform: translateY(8px); }
-to { opacity: 1; transform: translateY(0); }
-}
+  /* Wildcard cards */
+  .wildcards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
 
-.wildcard-header {
-display: flex; align-items: center;
-justify-content: space-between;
-margin-bottom: 10px;
-flex-wrap: wrap; gap: 8px;
-}
+  .wildcard-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    animation: cardIn 0.25s ease-out;
+  }
 
-.wildcard-name {
-font-family: ‘JetBrains Mono’, monospace;
-font-weight: 700; font-size: 0.92rem;
-color: var(–accent);
-background: var(–tag-bg);
-border: 1px solid var(–tag-border);
-padding: 3px 10px; border-radius: 6px;
-}
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-.wildcard-meta {
-display: flex; align-items: center; gap: 10px;
-}
+  .wildcard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 
-.wildcard-count {
-font-size: 0.75rem; color: var(–text-dim);
-font-family: ‘JetBrains Mono’, monospace;
-}
+  .wildcard-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--accent);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
 
-.seq-position {
-font-size: 0.68rem; color: var(–accent);
-font-family: ‘JetBrains Mono’, monospace;
-opacity: 0.8;
-}
+  .wildcard-count {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
 
-.mode-toggle {
-display: flex;
-background: var(–surface2);
-border: 1px solid var(–border);
-border-radius: 6px;
-overflow: hidden;
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 0.68rem;
-}
+  .wildcard-input {
+    font-size: 0.84rem !important;
+    padding: 10px 14px !important;
+    background: var(--surface2) !important;
+    min-height: 72px;
+    resize: vertical;
+    line-height: 1.7;
+  }
 
-.mode-opt {
-padding: 3px 9px;
-color: var(–text-dim);
-transition: all 0.15s;
-user-select: none;
-cursor: pointer;
-}
-.mode-opt:hover { color: var(–text); }
-.mode-opt.active {
-background: var(–accent);
-color: var(–bg);
-font-weight: 700;
-}
+  .wildcard-input::placeholder {
+    color: var(--text-dim);
+    opacity: 0.5;
+  }
 
-.wildcard-input {
-font-size: 0.84rem !important;
-padding: 10px 14px !important;
-background: var(–surface2) !important;
-min-height: 72px;
-resize: vertical;
-line-height: 1.7;
-}
-.wildcard-input::placeholder { color: var(–text-dim); opacity: 0.5; }
+  .empty-state {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius);
+    line-height: 1.6;
+  }
 
-.empty-state {
-text-align: center; padding: 36px 20px;
-color: var(–text-dim); font-size: 0.88rem;
-border: 1.5px dashed var(–border);
-border-radius: var(–radius); line-height: 1.6;
-}
-.empty-state .arrow { font-size: 1.3rem; display: block; margin-bottom: 6px; opacity: 0.4; }
+  .empty-state .arrow {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 6px;
+    opacity: 0.4;
+  }
 
-/* Buttons */
-.btn {
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 700; font-size: 0.88rem;
-border: none; border-radius: var(–radius);
-cursor: pointer; padding: 12px 24px;
-transition: all 0.15s;
-display: flex; align-items: center; gap: 8px;
-white-space: nowrap;
-}
-.btn-primary { background: var(–accent); color: var(–bg); flex-shrink: 0; }
-.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-.btn-primary:active { transform: translateY(0); }
-.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; transform: none; filter: none; }
+  /* Generate area */
+  .generate-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    margin-bottom: 14px;
+  }
 
-.btn-sm {
-font-size: 0.78rem; padding: 7px 14px;
-background: var(–surface2); color: var(–text-dim);
-border: 1px solid var(–border);
-}
-.btn-sm:hover { background: var(–border); color: var(–text); }
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
 
-.btn-io {
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 0.74rem; letter-spacing: 0.3px;
-}
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    flex-shrink: 0;
+  }
 
-.batch-input {
-width: 70px !important; min-width: 70px; max-width: 70px;
-text-align: center;
-font-size: 0.84rem !important;
-padding: 10px 8px !important;
-flex-shrink: 0; flex-grow: 0;
-}
-.batch-label { font-size: 0.78rem; color: var(–text-dim); align-self: center; flex-shrink: 0; }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
 
-.generate-row { display: flex; gap: 10px; align-items: stretch; margin-bottom: 14px; }
+  .btn-primary:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+  }
 
-/* Output */
-.output-area {
-background: var(–surface);
-border: 1.5px solid var(–border);
-border-radius: var(–radius);
-min-height: 60px;
-}
-.output-area:empty::before {
-content: ‘Generated prompts appear here…’;
-color: var(–text-dim); opacity: 0.4;
-font-size: 0.85rem; padding: 16px; display: block;
-}
+  .batch-input {
+    width: 70px !important;
+    min-width: 70px;
+    max-width: 70px;
+    text-align: center;
+    font-size: 0.84rem !important;
+    padding: 10px 8px !important;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
 
-.output-prompt {
-padding: 12px 16px;
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 0.84rem; line-height: 1.7;
-border-bottom: 1px solid var(–border);
-display: flex; align-items: flex-start; gap: 10px;
-cursor: pointer; transition: background 0.12s;
-position: relative;
-}
-.output-prompt:last-child { border-bottom: none; }
-.output-prompt:hover { background: var(–surface2); }
-.output-prompt .num {
-color: var(–text-dim); font-size: 0.72rem;
-flex-shrink: 0; min-width: 20px;
-text-align: right; padding-top: 2px; opacity: 0.5;
-}
-.output-prompt .text { flex: 1; word-break: break-word; }
-.output-prompt .text .filled { color: var(–green); font-weight: 600; }
-.output-prompt .copy-toast {
-position: absolute; right: 14px; top: 50%;
-transform: translateY(-50%);
-font-size: 0.72rem; color: var(–green);
-background: var(–green-dim);
-padding: 3px 8px; border-radius: 4px;
-opacity: 0; transition: opacity 0.2s;
-pointer-events: none;
-}
-.output-prompt.copied .copy-toast { opacity: 1; }
+  .batch-label {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    align-self: center;
+    flex-shrink: 0;
+  }
 
-.output-actions { display: flex; gap: 8px; margin-top: 10px; }
-.io-row { display: flex; gap: 8px; margin-top: 16px; }
-.divider { height: 1px; background: var(–border); margin: 32px 0; }
+  /* Output */
+  .output-area {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    min-height: 60px;
+    position: relative;
+  }
 
-@media (max-width: 600px) {
-.app { padding: 24px 16px 60px; }
-header h1 { font-size: 1.2rem; }
-.generate-row { flex-wrap: wrap; }
-.btn-primary { width: 100%; justify-content: center; }
-}
+  .output-area:empty::before {
+    content: 'Generated prompts appear here…';
+    color: var(--text-dim);
+    opacity: 0.4;
+    font-size: 0.85rem;
+    padding: 16px;
+    display: block;
+  }
+
+  .output-prompt {
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.12s;
+    position: relative;
+  }
+
+  .output-prompt:last-child { border-bottom: none; }
+  .output-prompt:hover { background: var(--surface2); }
+
+  .output-prompt .num {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    flex-shrink: 0;
+    min-width: 20px;
+    text-align: right;
+    padding-top: 2px;
+    opacity: 0.5;
+  }
+
+  .output-prompt .text {
+    flex: 1;
+    word-break: break-word;
+  }
+
+  .output-prompt .text .filled {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .output-prompt .copy-toast {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.72rem;
+    color: var(--green);
+    background: var(--green-dim);
+    padding: 3px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .output-prompt.copied .copy-toast { opacity: 1; }
+
+  .output-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .btn-sm {
+    font-size: 0.78rem;
+    padding: 7px 14px;
+    background: var(--surface2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .btn-sm:hover {
+    background: var(--border);
+    color: var(--text);
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .io-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .btn-io {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .app { padding: 24px 16px 60px; }
+    header h1 { font-size: 1.2rem; }
+    .generate-row { flex-wrap: wrap; }
+    .btn-primary { width: 100%; justify-content: center; }
+  }
 </style>
-
 </head>
 <body>
+
 <div class="app">
   <header>
     <h1><span class="icon">W</span> Wildcard Prompt Builder</h1>
     <p>Write a template with <code>[bracketed]</code> wildcards. Define options for each. Generate randomized prompts.</p>
   </header>
 
+  <!-- Template -->
   <div class="section">
     <div class="section-label">Prompt Template</div>
     <textarea id="template" placeholder="photo of a [color] dog playing with a [toy] in a [setting]" spellcheck="false"></textarea>
     <div class="hint">Use <code>[name]</code> for wildcards — they'll be detected automatically.</div>
   </div>
 
+  <!-- Wildcards -->
   <div class="section">
-    <div class="section-label">Wildcards <span class="count" id="wildcard-count">0</span></div>
+    <div class="section-label">
+      Wildcards
+      <span class="count" id="wildcard-count">0</span>
+    </div>
     <div id="wildcards" class="wildcards-container">
       <div class="empty-state">
         <span class="arrow">↑</span>
@@ -316,6 +419,7 @@ header h1 { font-size: 1.2rem; }
     </div>
   </div>
 
+  <!-- Import / Export -->
   <div class="io-row">
     <button class="btn btn-sm btn-io" onclick="exportConfig()">↗ Export Config</button>
     <button class="btn btn-sm btn-io" onclick="importConfig()">↙ Import Config</button>
@@ -324,6 +428,7 @@ header h1 { font-size: 1.2rem; }
 
   <div class="divider"></div>
 
+  <!-- Generate -->
   <div class="section">
     <div class="section-label">Generate</div>
     <div class="generate-row">
@@ -342,295 +447,297 @@ header h1 { font-size: 1.2rem; }
 </div>
 
 <script>
-const templateEl = document.getElementById('template');
-const wildcardsEl = document.getElementById('wildcards');
-const wildcardCountEl = document.getElementById('wildcard-count');
-const generateBtn = document.getElementById('generate-btn');
-const batchCountEl = document.getElementById('batch-count');
-const outputEl = document.getElementById('output');
-const outputActionsEl = document.getElementById('output-actions');
-const importFileEl = document.getElementById('import-file');
+  const templateEl = document.getElementById('template');
+  const wildcardsEl = document.getElementById('wildcards');
+  const wildcardCountEl = document.getElementById('wildcard-count');
+  const generateBtn = document.getElementById('generate-btn');
+  const batchCountEl = document.getElementById('batch-count');
+  const outputEl = document.getElementById('output');
+  const outputActionsEl = document.getElementById('output-actions');
 
-// ── State ──
-let currentWildcards = [];
-let wildcardOptions = {};
-let wildcardModes = {};
-let sequentialIndex = {};
+  // State
+  let currentWildcards = [];          // ordered list of names
+  let wildcardOptions = {};            // name -> newline-separated string (persisted across re-parses)
 
-// ── Parsing ──
-function parseWildcards(text) {
-  const matches = text.match(/\[([^\]]+)\]/g) || [];
-  const seen = new Set();
-  const names = [];
-  for (const m of matches) {
-    const name = m.slice(1, -1).trim();
-    if (name && !seen.has(name.toLowerCase())) {
-      seen.add(name.toLowerCase());
-      names.push(name);
+  // Parse wildcards from template
+  function parseWildcards(text) {
+    const matches = text.match(/\[([^\]]+)\]/g) || [];
+    const seen = new Set();
+    const names = [];
+    for (const m of matches) {
+      const name = m.slice(1, -1).trim();
+      if (name && !seen.has(name.toLowerCase())) {
+        seen.add(name.toLowerCase());
+        names.push(name);
+      }
     }
-  }
-  return names;
-}
-
-function parseOptions(str) {
-  return str.split('\n').map(s => s.trim()).filter(Boolean);
-}
-
-// ── Helpers ──
-function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function css(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, '-'); }
-
-// ── Render ──
-function renderWildcards(names) {
-  if (names.length === 0) {
-    wildcardsEl.innerHTML = `
-      <div class="empty-state">
-        <span class="arrow">↑</span>
-        Type a template above with <code>[bracketed]</code> wildcards to get started.
-      </div>`;
-    wildcardCountEl.textContent = '0';
-    generateBtn.disabled = true;
-    return;
+    return names;
   }
 
-  wildcardCountEl.textContent = names.length;
+  // Render wildcard input cards
+  function renderWildcards(names) {
+    if (names.length === 0) {
+      wildcardsEl.innerHTML = `
+        <div class="empty-state">
+          <span class="arrow">↑</span>
+          Type a template above with <code>[bracketed]</code> wildcards to get started.
+        </div>`;
+      wildcardCountEl.textContent = '0';
+      generateBtn.disabled = true;
+      return;
+    }
 
-  wildcardsEl.innerHTML = names.map(name => {
-    const key = name.toLowerCase();
-    const val = wildcardOptions[key] || '';
-    const mode = wildcardModes[key] || 'random';
-    const idx = sequentialIndex[key] || 0;
-    const opts = parseOptions(val);
-    const posLabel = (mode === 'sequential' && opts.length > 0)
-      ? '<span class="seq-position">next: ' + ((idx % opts.length) + 1) + '/' + opts.length + '</span>'
-      : '';
+    wildcardCountEl.textContent = names.length;
 
-    return '<div class="wildcard-card">'
-      + '<div class="wildcard-header">'
-      +   '<span class="wildcard-name">[' + esc(name) + ']</span>'
-      +   '<div class="wildcard-meta">'
-      +     '<span class="wildcard-count" id="count-' + css(name) + '">' + opts.length + ' option' + (opts.length !== 1 ? 's' : '') + '</span>'
-      +     posLabel
-      +     '<div class="mode-toggle" data-name="' + esc(name) + '">'
-      +       '<span class="mode-opt' + (mode === 'random' ? ' active' : '') + '" data-mode="random">Random</span>'
-      +       '<span class="mode-opt' + (mode === 'sequential' ? ' active' : '') + '" data-mode="sequential">Sequential</span>'
-      +     '</div>'
-      +   '</div>'
-      + '</div>'
-      + '<textarea class="wildcard-input" data-name="' + esc(name) + '"'
-      +   ' placeholder="one option per line&#10;red&#10;blue&#10;golden"'
-      +   ' rows="3" spellcheck="false">' + esc(val) + '</textarea>'
+    // Build HTML
+    wildcardsEl.innerHTML = names.map(name => {
+      const val = wildcardOptions[name.toLowerCase()] || '';
+      return `
+        <div class="wildcard-card">
+          <div class="wildcard-header">
+            <span class="wildcard-name">[${name}]</span>
+            <span class="wildcard-count" id="count-${css(name)}">0 options</span>
+          </div>
+          <textarea class="wildcard-input"
+            data-name="${esc(name)}"
+            placeholder="one option per line&#10;red&#10;blue&#10;golden"
+            rows="3"
+            spellcheck="false">${esc(val)}</textarea>
+        </div>`;
+    }).join('');
 
-```
-  + '</div>';
-```
+    // Attach listeners & update counts
+    wildcardsEl.querySelectorAll('.wildcard-input').forEach(input => {
+      updateOptionCount(input);
+      input.addEventListener('input', () => {
+        wildcardOptions[input.dataset.name.toLowerCase()] = input.value;
+        updateOptionCount(input);
+        checkReady();
+      });
+    });
 
-}).join(’’);
-
-// Input listeners
-wildcardsEl.querySelectorAll(’.wildcard-input’).forEach(function(input) {
-input.addEventListener(‘input’, function() {
-var key = input.dataset.name.toLowerCase();
-wildcardOptions[key] = input.value;
-var opts = parseOptions(input.value);
-var countEl = document.getElementById(‘count-’ + css(input.dataset.name));
-if (countEl) countEl.textContent = opts.length + ’ option’ + (opts.length !== 1 ? ‘s’ : ‘’);
-checkReady();
-});
-});
-
-// Mode toggle listeners
-wildcardsEl.querySelectorAll(’.mode-toggle’).forEach(function(toggle) {
-toggle.querySelectorAll(’.mode-opt’).forEach(function(opt) {
-opt.addEventListener(‘click’, function() {
-var key = toggle.dataset.name.toLowerCase();
-wildcardModes[key] = opt.dataset.mode;
-if (opt.dataset.mode === ‘sequential’ && !(key in sequentialIndex)) {
-sequentialIndex[key] = 0;
-}
-renderWildcards(currentWildcards);
-});
-});
-});
-
-checkReady();
-}
-
-function checkReady() {
-var allFilled = currentWildcards.every(function(name) {
-return parseOptions(wildcardOptions[name.toLowerCase()] || ‘’).length > 0;
-});
-generateBtn.disabled = !(currentWildcards.length > 0 && allFilled);
-}
-
-// ── Template input ──
-var debounceTimer;
-templateEl.addEventListener(‘input’, function() {
-clearTimeout(debounceTimer);
-debounceTimer = setTimeout(function() {
-currentWildcards = parseWildcards(templateEl.value);
-renderWildcards(currentWildcards);
-}, 200);
-});
-
-// ── Generate ──
-generateBtn.addEventListener(‘click’, generate);
-
-function generate() {
-var template = templateEl.value;
-var count = Math.max(1, Math.min(100, parseInt(batchCountEl.value) || 5));
-
-var optionsMap = {};
-for (var i = 0; i < currentWildcards.length; i++) {
-var n = currentWildcards[i].toLowerCase();
-optionsMap[n] = parseOptions(wildcardOptions[n] || ‘’);
-}
-
-function pick(key) {
-var opts = optionsMap[key];
-if (!opts || opts.length === 0) return null;
-var mode = wildcardModes[key] || ‘random’;
-if (mode === ‘sequential’) {
-var idx = (sequentialIndex[key] || 0) % opts.length;
-sequentialIndex[key] = idx + 1;
-return opts[idx];
-}
-return opts[Math.floor(Math.random() * opts.length)];
-}
-
-outputEl.innerHTML = ‘’;
-
-for (var p = 0; p < count; p++) {
-var plain = ‘’;
-var html = ‘’;
-var last = 0;
-var rx = /[([^]]+)]/g;
-var m;
-while ((m = rx.exec(template)) !== null) {
-var before = template.slice(last, m.index);
-plain += before;
-html += esc(before);
-var key = m[1].trim().toLowerCase();
-var picked = pick(key);
-if (picked !== null) {
-plain += picked;
-html += ‘<span class="filled">’ + esc(picked) + ‘</span>’;
-} else {
-plain += m[0];
-html += esc(m[0]);
-}
-last = m.index + m[0].length;
-}
-plain += template.slice(last);
-html += esc(template.slice(last));
-
-```
-var div = document.createElement('div');
-div.className = 'output-prompt';
-div.innerHTML = '<span class="num">' + (p + 1) + '</span>'
-  + '<span class="text">' + html + '</span>'
-  + '<span class="copy-toast">Copied</span>';
-div.dataset.plain = plain;
-div.addEventListener('click', (function(d) {
-  return function() { copyOne(d); };
-})(div));
-outputEl.appendChild(div);
-```
-
-}
-
-outputActionsEl.style.display = ‘flex’;
-renderWildcards(currentWildcards);
-}
-
-// ── Copy ──
-function copyOne(div) {
-navigator.clipboard.writeText(div.dataset.plain).then(function() {
-div.classList.add(‘copied’);
-setTimeout(function() { div.classList.remove(‘copied’); }, 1200);
-});
-}
-
-function copyAll() {
-var all = [];
-outputEl.querySelectorAll(’.output-prompt’).forEach(function(d) {
-all.push(d.dataset.plain);
-});
-navigator.clipboard.writeText(all.join(’\n’));
-}
-
-function clearOutput() {
-outputEl.innerHTML = ‘’;
-outputActionsEl.style.display = ‘none’;
-}
-
-// ── Keyboard shortcut ──
-document.addEventListener(‘keydown’, function(e) {
-if ((e.metaKey || e.ctrlKey) && e.key === ‘Enter’ && !generateBtn.disabled) {
-generate();
-}
-});
-
-// ── Export ──
-function exportConfig() {
-var data = { _wcb: 1, template: templateEl.value, wildcards: {}, modes: {}, positions: {} };
-for (var i = 0; i < currentWildcards.length; i++) {
-var key = currentWildcards[i].toLowerCase();
-data.wildcards[key] = wildcardOptions[key] || ‘’;
-data.modes[key] = wildcardModes[key] || ‘random’;
-if (sequentialIndex[key]) data.positions[key] = sequentialIndex[key];
-}
-var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
-var blob = new Blob([encoded], { type: ‘application/octet-stream’ });
-var a = document.createElement(‘a’);
-a.href = URL.createObjectURL(blob);
-a.download = ‘prompt-config.wcb’;
-a.click();
-URL.revokeObjectURL(a.href);
-}
-
-// ── Import ──
-function importConfig() {
-importFileEl.value = ‘’;
-importFileEl.click();
-}
-
-importFileEl.addEventListener(‘change’, function(e) {
-var file = e.target.files[0];
-if (!file) return;
-var reader = new FileReader();
-reader.onload = function() {
-try {
-var decoded = decodeURIComponent(escape(atob(reader.result.trim())));
-var data = JSON.parse(decoded);
-if (!data._wcb) throw new Error(‘Invalid’);
-
-```
-  templateEl.value = data.template || '';
-  wildcardOptions = {};
-  wildcardModes = {};
-  sequentialIndex = {};
-
-  if (data.wildcards) {
-    for (var k in data.wildcards) wildcardOptions[k.toLowerCase()] = data.wildcards[k];
-  }
-  if (data.modes) {
-    for (var k in data.modes) wildcardModes[k.toLowerCase()] = data.modes[k];
-  }
-  if (data.positions) {
-    for (var k in data.positions) sequentialIndex[k.toLowerCase()] = data.positions[k];
+    checkReady();
   }
 
-  currentWildcards = parseWildcards(templateEl.value);
-  renderWildcards(currentWildcards);
-} catch (err) {
-  alert('Could not read this file. Make sure it\'s a valid .wcb config.');
-}
-```
+  function updateOptionCount(input) {
+    const opts = parseOptions(input.value);
+    const name = input.dataset.name;
+    const countEl = document.getElementById('count-' + css(name));
+    if (countEl) countEl.textContent = opts.length + ' option' + (opts.length !== 1 ? 's' : '');
+  }
 
-};
-reader.readAsText(file);
-});
+  function parseOptions(str) {
+    return str.split('\n').map(s => s.trim()).filter(Boolean);
+  }
+
+  function checkReady() {
+    const allFilled = currentWildcards.every(name => {
+      return parseOptions(wildcardOptions[name.toLowerCase()] || '').length > 0;
+    });
+    generateBtn.disabled = !(currentWildcards.length > 0 && allFilled);
+  }
+
+  // Helpers
+  function esc(s) { return s.replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+  function css(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, '-'); }
+
+  // Template input handler
+  let debounce;
+  templateEl.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(() => {
+      const names = parseWildcards(templateEl.value);
+      currentWildcards = names;
+      renderWildcards(names);
+    }, 200);
+  });
+
+  // Generate
+  generateBtn.addEventListener('click', generate);
+
+  function generate() {
+    const template = templateEl.value;
+    const count = Math.max(1, Math.min(100, parseInt(batchCountEl.value) || 5));
+
+    // Gather options map
+    const optionsMap = {};
+    for (const name of currentWildcards) {
+      optionsMap[name.toLowerCase()] = parseOptions(wildcardOptions[name.toLowerCase()] || '');
+    }
+
+    outputEl.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+      const result = template.replace(/\[([^\]]+)\]/g, (match, inner) => {
+        const key = inner.trim().toLowerCase();
+        const opts = optionsMap[key];
+        if (!opts || opts.length === 0) return match;
+        return opts[Math.floor(Math.random() * opts.length)];
+      });
+
+      // Build highlighted version
+      let highlighted = template;
+      const parts = [];
+      let cursor = 0;
+      const regex = /\[([^\]]+)\]/g;
+      let m;
+      while ((m = regex.exec(template)) !== null) {
+        parts.push(escHtml(template.slice(cursor, m.index)));
+        const key = m[1].trim().toLowerCase();
+        const opts = optionsMap[key];
+        if (opts && opts.length > 0) {
+          const pick = result.slice(
+            result.indexOf(parts.length > 0 ? '' : '') // we'll just re-generate for highlight
+          );
+          // Simpler: re-pick for display
+        }
+        cursor = m.index + m[0].length;
+      }
+
+      // Actually just highlight picks in the result
+      let highlightedResult = '';
+      let srcCursor = 0;
+      const srcRegex = /\[([^\]]+)\]/g;
+      let resCursor = 0;
+      let sm;
+      // Build side-by-side
+      const picks = [];
+      template.replace(/\[([^\]]+)\]/g, (match, inner, offset) => {
+        const key = inner.trim().toLowerCase();
+        const opts = optionsMap[key];
+        if (opts && opts.length > 0) {
+          picks.push(opts[Math.floor(Math.random() * opts.length)]);
+        } else {
+          picks.push(null);
+        }
+      });
+
+      // Re-do cleanly: one pass
+      let finalPlain = '';
+      let finalHtml = '';
+      let pi = 0;
+      let last = 0;
+      const rx = /\[([^\]]+)\]/g;
+      let rm;
+      while ((rm = rx.exec(template)) !== null) {
+        const before = template.slice(last, rm.index);
+        finalPlain += before;
+        finalHtml += escHtml(before);
+        const key = rm[1].trim().toLowerCase();
+        const opts = optionsMap[key];
+        if (opts && opts.length > 0) {
+          const pick = opts[Math.floor(Math.random() * opts.length)];
+          finalPlain += pick;
+          finalHtml += `<span class="filled">${escHtml(pick)}</span>`;
+        } else {
+          finalPlain += rm[0];
+          finalHtml += escHtml(rm[0]);
+        }
+        last = rm.index + rm[0].length;
+      }
+      finalPlain += template.slice(last);
+      finalHtml += escHtml(template.slice(last));
+
+      const div = document.createElement('div');
+      div.className = 'output-prompt';
+      div.innerHTML = `
+        <span class="num">${i + 1}</span>
+        <span class="text">${finalHtml}</span>
+        <span class="copy-toast">Copied</span>`;
+      div.dataset.plain = finalPlain;
+      div.addEventListener('click', () => copyOne(div));
+      outputEl.appendChild(div);
+    }
+
+    outputActionsEl.style.display = 'flex';
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function copyOne(div) {
+    navigator.clipboard.writeText(div.dataset.plain).then(() => {
+      div.classList.add('copied');
+      setTimeout(() => div.classList.remove('copied'), 1200);
+    });
+  }
+
+  function copyAll() {
+    const all = [...outputEl.querySelectorAll('.output-prompt')]
+      .map(d => d.dataset.plain).join('\n');
+    navigator.clipboard.writeText(all);
+  }
+
+  function clearOutput() {
+    outputEl.innerHTML = '';
+    outputActionsEl.style.display = 'none';
+  }
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && !generateBtn.disabled) {
+      generate();
+    }
+  });
+
+  // Export: JSON → base64 → .wcb file download
+  function exportConfig() {
+    const data = {
+      _wcb: 1,
+      template: templateEl.value,
+      wildcards: {}
+    };
+    for (const name of currentWildcards) {
+      data.wildcards[name.toLowerCase()] = wildcardOptions[name.toLowerCase()] || '';
+    }
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+    const blob = new Blob([encoded], { type: 'application/octet-stream' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'prompt-config.wcb';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // Import: .wcb file → base64 decode → restore state
+  const importFileEl = document.getElementById('import-file');
+
+  function importConfig() {
+    importFileEl.value = '';
+    importFileEl.click();
+  }
+
+  importFileEl.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const decoded = decodeURIComponent(escape(atob(reader.result.trim())));
+        const data = JSON.parse(decoded);
+        if (!data._wcb) throw new Error('Not a valid config');
+
+        // Restore template
+        templateEl.value = data.template || '';
+
+        // Restore wildcard options
+        wildcardOptions = {};
+        if (data.wildcards) {
+          for (const [key, val] of Object.entries(data.wildcards)) {
+            wildcardOptions[key.toLowerCase()] = val;
+          }
+        }
+
+        // Re-parse and render
+        currentWildcards = parseWildcards(templateEl.value);
+        renderWildcards(currentWildcards);
+      } catch (err) {
+        alert('Could not read this file. Make sure it\'s a valid .wcb config.');
+      }
+    };
+    reader.readAsText(file);
+  });
 </script>
 
 </body>
