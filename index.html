@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -25,370 +26,371 @@
     --radius: 10px;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+padding: 0;
+}
 
-  .app {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
+.app {
+max-width: 860px;
+margin: 0 auto;
+padding: 40px 24px 80px;
+}
 
-  header {
-    margin-bottom: 40px;
-  }
+header {
+margin-bottom: 40px;
+}
 
-  header h1 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+header h1 {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(–accent);
+letter-spacing: -0.5px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
 
-  header h1 .icon {
-    width: 32px;
-    height: 32px;
-    background: var(--accent);
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-size: 16px;
-    color: var(--bg);
-    font-weight: 700;
-  }
+header h1 .icon {
+width: 32px;
+height: 32px;
+background: var(–accent);
+border-radius: 8px;
+display: grid;
+place-items: center;
+font-size: 16px;
+color: var(–bg);
+font-weight: 700;
+}
 
-  header p {
-    color: var(--text-dim);
-    margin-top: 8px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
+header p {
+color: var(–text-dim);
+margin-top: 8px;
+font-size: 0.9rem;
+line-height: 1.5;
+}
 
-  .section {
-    margin-bottom: 28px;
-  }
+.section {
+margin-bottom: 28px;
+}
 
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.section-label {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 0.7rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+color: var(–text-dim);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
 
-  .section-label .count {
-    background: var(--accent-dim);
-    color: var(--accent);
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 0.65rem;
-  }
+.section-label .count {
+background: var(–accent-dim);
+color: var(–accent);
+padding: 2px 7px;
+border-radius: 4px;
+font-size: 0.65rem;
+}
 
-  textarea, input[type="text"] {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88rem;
-    background: var(--surface);
-    color: var(--text);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    line-height: 1.6;
-  }
+textarea, input[type=“text”] {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 0.88rem;
+background: var(–surface);
+color: var(–text);
+border: 1.5px solid var(–border);
+border-radius: var(–radius);
+padding: 14px 16px;
+width: 100%;
+outline: none;
+transition: border-color 0.2s, box-shadow 0.2s;
+line-height: 1.6;
+}
 
-  textarea:focus, input[type="text"]:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-  }
+textarea:focus, input[type=“text”]:focus {
+border-color: var(–accent);
+box-shadow: 0 0 0 3px var(–accent-glow);
+}
 
-  textarea {
-    min-height: 110px;
-    resize: vertical;
-  }
+textarea {
+min-height: 110px;
+resize: vertical;
+}
 
-  .hint {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
+.hint {
+font-size: 0.78rem;
+color: var(–text-dim);
+margin-top: 6px;
+}
 
-  .hint code {
-    background: var(--surface2);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-  }
+.hint code {
+background: var(–surface2);
+padding: 2px 6px;
+border-radius: 4px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 0.75rem;
+color: var(–accent);
+}
 
-  /* Wildcard cards */
-  .wildcards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+/* Wildcard cards */
+.wildcards-container {
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
 
-  .wildcard-card {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-    animation: cardIn 0.25s ease-out;
-  }
+.wildcard-card {
+background: var(–surface);
+border: 1.5px solid var(–border);
+border-radius: var(–radius);
+padding: 16px;
+animation: cardIn 0.25s ease-out;
+}
 
-  @keyframes cardIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@keyframes cardIn {
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
+}
 
-  .wildcard-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+.wildcard-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 10px;
+}
 
-  .wildcard-name {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 0.92rem;
-    color: var(--accent);
-    background: var(--tag-bg);
-    border: 1px solid var(--tag-border);
-    padding: 3px 10px;
-    border-radius: 6px;
-  }
+.wildcard-name {
+font-family: ‘JetBrains Mono’, monospace;
+font-weight: 700;
+font-size: 0.92rem;
+color: var(–accent);
+background: var(–tag-bg);
+border: 1px solid var(–tag-border);
+padding: 3px 10px;
+border-radius: 6px;
+}
 
-  .wildcard-count {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    font-family: 'JetBrains Mono', monospace;
-  }
+.wildcard-count {
+font-size: 0.75rem;
+color: var(–text-dim);
+font-family: ‘JetBrains Mono’, monospace;
+}
 
-  .wildcard-input {
-    font-size: 0.84rem !important;
-    padding: 10px 14px !important;
-    background: var(--surface2) !important;
-    min-height: 72px;
-    resize: vertical;
-    line-height: 1.7;
-  }
+.wildcard-input {
+font-size: 0.84rem !important;
+padding: 10px 14px !important;
+background: var(–surface2) !important;
+min-height: 72px;
+resize: vertical;
+line-height: 1.7;
+}
 
-  .wildcard-input::placeholder {
-    color: var(--text-dim);
-    opacity: 0.5;
-  }
+.wildcard-input::placeholder {
+color: var(–text-dim);
+opacity: 0.5;
+}
 
-  .empty-state {
-    text-align: center;
-    padding: 36px 20px;
-    color: var(--text-dim);
-    font-size: 0.88rem;
-    border: 1.5px dashed var(--border);
-    border-radius: var(--radius);
-    line-height: 1.6;
-  }
+.empty-state {
+text-align: center;
+padding: 36px 20px;
+color: var(–text-dim);
+font-size: 0.88rem;
+border: 1.5px dashed var(–border);
+border-radius: var(–radius);
+line-height: 1.6;
+}
 
-  .empty-state .arrow {
-    font-size: 1.3rem;
-    display: block;
-    margin-bottom: 6px;
-    opacity: 0.4;
-  }
+.empty-state .arrow {
+font-size: 1.3rem;
+display: block;
+margin-bottom: 6px;
+opacity: 0.4;
+}
 
-  /* Generate area */
-  .generate-row {
-    display: flex;
-    gap: 10px;
-    align-items: stretch;
-    margin-bottom: 14px;
-  }
+/* Generate area */
+.generate-row {
+display: flex;
+gap: 10px;
+align-items: stretch;
+margin-bottom: 14px;
+}
 
-  .btn {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    padding: 12px 24px;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-  }
+.btn {
+font-family: ‘DM Sans’, sans-serif;
+font-weight: 700;
+font-size: 0.88rem;
+border: none;
+border-radius: var(–radius);
+cursor: pointer;
+padding: 12px 24px;
+transition: all 0.15s;
+display: flex;
+align-items: center;
+gap: 8px;
+white-space: nowrap;
+}
 
-  .btn-primary {
-    background: var(--accent);
-    color: var(--bg);
-    flex-shrink: 0;
-  }
+.btn-primary {
+background: var(–accent);
+color: var(–bg);
+flex-shrink: 0;
+}
 
-  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
-  .btn-primary:active { transform: translateY(0); }
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
 
-  .btn-primary:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    transform: none;
-    filter: none;
-  }
+.btn-primary:disabled {
+opacity: 0.35;
+cursor: not-allowed;
+transform: none;
+filter: none;
+}
 
-  .batch-input {
-    width: 70px !important;
-    min-width: 70px;
-    max-width: 70px;
-    text-align: center;
-    font-size: 0.84rem !important;
-    padding: 10px 8px !important;
-    flex-shrink: 0;
-    flex-grow: 0;
-  }
+.batch-input {
+width: 70px !important;
+min-width: 70px;
+max-width: 70px;
+text-align: center;
+font-size: 0.84rem !important;
+padding: 10px 8px !important;
+flex-shrink: 0;
+flex-grow: 0;
+}
 
-  .batch-label {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    align-self: center;
-    flex-shrink: 0;
-  }
+.batch-label {
+font-size: 0.78rem;
+color: var(–text-dim);
+align-self: center;
+flex-shrink: 0;
+}
 
-  /* Output */
-  .output-area {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    min-height: 60px;
-    position: relative;
-  }
+/* Output */
+.output-area {
+background: var(–surface);
+border: 1.5px solid var(–border);
+border-radius: var(–radius);
+min-height: 60px;
+position: relative;
+}
 
-  .output-area:empty::before {
-    content: 'Generated prompts appear here…';
-    color: var(--text-dim);
-    opacity: 0.4;
-    font-size: 0.85rem;
-    padding: 16px;
-    display: block;
-  }
+.output-area:empty::before {
+content: ‘Generated prompts appear here…’;
+color: var(–text-dim);
+opacity: 0.4;
+font-size: 0.85rem;
+padding: 16px;
+display: block;
+}
 
-  .output-prompt {
-    padding: 12px 16px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.84rem;
-    line-height: 1.7;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    cursor: pointer;
-    transition: background 0.12s;
-    position: relative;
-  }
+.output-prompt {
+padding: 12px 16px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 0.84rem;
+line-height: 1.7;
+border-bottom: 1px solid var(–border);
+display: flex;
+align-items: flex-start;
+gap: 10px;
+cursor: pointer;
+transition: background 0.12s;
+position: relative;
+}
 
-  .output-prompt:last-child { border-bottom: none; }
-  .output-prompt:hover { background: var(--surface2); }
+.output-prompt:last-child { border-bottom: none; }
+.output-prompt:hover { background: var(–surface2); }
 
-  .output-prompt .num {
-    color: var(--text-dim);
-    font-size: 0.72rem;
-    flex-shrink: 0;
-    min-width: 20px;
-    text-align: right;
-    padding-top: 2px;
-    opacity: 0.5;
-  }
+.output-prompt .num {
+color: var(–text-dim);
+font-size: 0.72rem;
+flex-shrink: 0;
+min-width: 20px;
+text-align: right;
+padding-top: 2px;
+opacity: 0.5;
+}
 
-  .output-prompt .text {
-    flex: 1;
-    word-break: break-word;
-  }
+.output-prompt .text {
+flex: 1;
+word-break: break-word;
+}
 
-  .output-prompt .text .filled {
-    color: var(--green);
-    font-weight: 600;
-  }
+.output-prompt .text .filled {
+color: var(–green);
+font-weight: 600;
+}
 
-  .output-prompt .copy-toast {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.72rem;
-    color: var(--green);
-    background: var(--green-dim);
-    padding: 3px 8px;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-  }
+.output-prompt .copy-toast {
+position: absolute;
+right: 14px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 0.72rem;
+color: var(–green);
+background: var(–green-dim);
+padding: 3px 8px;
+border-radius: 4px;
+opacity: 0;
+transition: opacity 0.2s;
+pointer-events: none;
+}
 
-  .output-prompt.copied .copy-toast { opacity: 1; }
+.output-prompt.copied .copy-toast { opacity: 1; }
 
-  .output-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-  }
+.output-actions {
+display: flex;
+gap: 8px;
+margin-top: 10px;
+}
 
-  .btn-sm {
-    font-size: 0.78rem;
-    padding: 7px 14px;
-    background: var(--surface2);
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-  }
+.btn-sm {
+font-size: 0.78rem;
+padding: 7px 14px;
+background: var(–surface2);
+color: var(–text-dim);
+border: 1px solid var(–border);
+}
 
-  .btn-sm:hover {
-    background: var(--border);
-    color: var(--text);
-  }
+.btn-sm:hover {
+background: var(–border);
+color: var(–text);
+}
 
-  /* Divider */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 32px 0;
-  }
+/* Divider */
+.divider {
+height: 1px;
+background: var(–border);
+margin: 32px 0;
+}
 
-  .io-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-  }
+.io-row {
+display: flex;
+gap: 8px;
+margin-top: 16px;
+}
 
-  .btn-io {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.3px;
-  }
+.btn-io {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 0.74rem;
+letter-spacing: 0.3px;
+}
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .app { padding: 24px 16px 60px; }
-    header h1 { font-size: 1.2rem; }
-    .generate-row { flex-wrap: wrap; }
-    .btn-primary { width: 100%; justify-content: center; }
-  }
+/* Responsive */
+@media (max-width: 600px) {
+.app { padding: 24px 16px 60px; }
+header h1 { font-size: 1.2rem; }
+.generate-row { flex-wrap: wrap; }
+.btn-primary { width: 100%; justify-content: center; }
+}
 </style>
+
 </head>
 <body>
 
@@ -399,6 +401,7 @@
   </header>
 
   <!-- Template -->
+
   <div class="section">
     <div class="section-label">Prompt Template</div>
     <textarea id="template" placeholder="photo of a [color] dog playing with a [toy] in a [setting]" spellcheck="false"></textarea>
@@ -406,6 +409,7 @@
   </div>
 
   <!-- Wildcards -->
+
   <div class="section">
     <div class="section-label">
       Wildcards
@@ -420,6 +424,7 @@
   </div>
 
   <!-- Import / Export -->
+
   <div class="io-row">
     <button class="btn btn-sm btn-io" onclick="exportConfig()">↗ Export Config</button>
     <button class="btn btn-sm btn-io" onclick="importConfig()">↙ Import Config</button>
@@ -429,6 +434,7 @@
   <div class="divider"></div>
 
   <!-- Generate -->
+
   <div class="section">
     <div class="section-label">Generate</div>
     <div class="generate-row">
@@ -503,241 +509,251 @@
             placeholder="one option per line&#10;red&#10;blue&#10;golden"
             rows="3"
             spellcheck="false">${esc(val)}</textarea>
-        </div>`;
-    }).join('');
 
-    // Attach listeners & update counts
-    wildcardsEl.querySelectorAll('.wildcard-input').forEach(input => {
-      updateOptionCount(input);
-      input.addEventListener('input', () => {
-        wildcardOptions[input.dataset.name.toLowerCase()] = input.value;
-        updateOptionCount(input);
-        checkReady();
-      });
-    });
+```
+    </div>`;
+}).join('');
 
+// Attach listeners & update counts
+wildcardsEl.querySelectorAll('.wildcard-input').forEach(input => {
+  updateOptionCount(input);
+  input.addEventListener('input', () => {
+    wildcardOptions[input.dataset.name.toLowerCase()] = input.value;
+    updateOptionCount(input);
     checkReady();
-  }
+  });
+});
 
-  function updateOptionCount(input) {
-    const opts = parseOptions(input.value);
-    const name = input.dataset.name;
-    const countEl = document.getElementById('count-' + css(name));
-    if (countEl) countEl.textContent = opts.length + ' option' + (opts.length !== 1 ? 's' : '');
-  }
+checkReady();
+```
 
-  function parseOptions(str) {
-    return str.split('\n').map(s => s.trim()).filter(Boolean);
-  }
+}
 
-  function checkReady() {
-    const allFilled = currentWildcards.every(name => {
-      return parseOptions(wildcardOptions[name.toLowerCase()] || '').length > 0;
-    });
-    generateBtn.disabled = !(currentWildcards.length > 0 && allFilled);
-  }
+function updateOptionCount(input) {
+const opts = parseOptions(input.value);
+const name = input.dataset.name;
+const countEl = document.getElementById(‘count-’ + css(name));
+if (countEl) countEl.textContent = opts.length + ’ option’ + (opts.length !== 1 ? ‘s’ : ‘’);
+}
 
-  // Helpers
-  function esc(s) { return s.replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
-  function css(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, '-'); }
+function parseOptions(str) {
+return str.split(’\n’).map(s => s.trim()).filter(Boolean);
+}
 
-  // Template input handler
-  let debounce;
-  templateEl.addEventListener('input', () => {
-    clearTimeout(debounce);
-    debounce = setTimeout(() => {
-      const names = parseWildcards(templateEl.value);
-      currentWildcards = names;
-      renderWildcards(names);
-    }, 200);
+function checkReady() {
+const allFilled = currentWildcards.every(name => {
+return parseOptions(wildcardOptions[name.toLowerCase()] || ‘’).length > 0;
+});
+generateBtn.disabled = !(currentWildcards.length > 0 && allFilled);
+}
+
+// Helpers
+function esc(s) { return s.replace(/”/g, ‘"’).replace(/</g, ‘<’); }
+function css(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ‘-’); }
+
+// Template input handler
+let debounce;
+templateEl.addEventListener(‘input’, () => {
+clearTimeout(debounce);
+debounce = setTimeout(() => {
+const names = parseWildcards(templateEl.value);
+currentWildcards = names;
+renderWildcards(names);
+}, 200);
+});
+
+// Generate
+generateBtn.addEventListener(‘click’, generate);
+
+function generate() {
+const template = templateEl.value;
+const count = Math.max(1, Math.min(100, parseInt(batchCountEl.value) || 5));
+
+```
+// Gather options map
+const optionsMap = {};
+for (const name of currentWildcards) {
+  optionsMap[name.toLowerCase()] = parseOptions(wildcardOptions[name.toLowerCase()] || '');
+}
+
+outputEl.innerHTML = '';
+
+for (let i = 0; i < count; i++) {
+  const result = template.replace(/\[([^\]]+)\]/g, (match, inner) => {
+    const key = inner.trim().toLowerCase();
+    const opts = optionsMap[key];
+    if (!opts || opts.length === 0) return match;
+    return opts[Math.floor(Math.random() * opts.length)];
   });
 
-  // Generate
-  generateBtn.addEventListener('click', generate);
-
-  function generate() {
-    const template = templateEl.value;
-    const count = Math.max(1, Math.min(100, parseInt(batchCountEl.value) || 5));
-
-    // Gather options map
-    const optionsMap = {};
-    for (const name of currentWildcards) {
-      optionsMap[name.toLowerCase()] = parseOptions(wildcardOptions[name.toLowerCase()] || '');
+  // Build highlighted version
+  let highlighted = template;
+  const parts = [];
+  let cursor = 0;
+  const regex = /\[([^\]]+)\]/g;
+  let m;
+  while ((m = regex.exec(template)) !== null) {
+    parts.push(escHtml(template.slice(cursor, m.index)));
+    const key = m[1].trim().toLowerCase();
+    const opts = optionsMap[key];
+    if (opts && opts.length > 0) {
+      const pick = result.slice(
+        result.indexOf(parts.length > 0 ? '' : '') // we'll just re-generate for highlight
+      );
+      // Simpler: re-pick for display
     }
-
-    outputEl.innerHTML = '';
-
-    for (let i = 0; i < count; i++) {
-      const result = template.replace(/\[([^\]]+)\]/g, (match, inner) => {
-        const key = inner.trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (!opts || opts.length === 0) return match;
-        return opts[Math.floor(Math.random() * opts.length)];
-      });
-
-      // Build highlighted version
-      let highlighted = template;
-      const parts = [];
-      let cursor = 0;
-      const regex = /\[([^\]]+)\]/g;
-      let m;
-      while ((m = regex.exec(template)) !== null) {
-        parts.push(escHtml(template.slice(cursor, m.index)));
-        const key = m[1].trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (opts && opts.length > 0) {
-          const pick = result.slice(
-            result.indexOf(parts.length > 0 ? '' : '') // we'll just re-generate for highlight
-          );
-          // Simpler: re-pick for display
-        }
-        cursor = m.index + m[0].length;
-      }
-
-      // Actually just highlight picks in the result
-      let highlightedResult = '';
-      let srcCursor = 0;
-      const srcRegex = /\[([^\]]+)\]/g;
-      let resCursor = 0;
-      let sm;
-      // Build side-by-side
-      const picks = [];
-      template.replace(/\[([^\]]+)\]/g, (match, inner, offset) => {
-        const key = inner.trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (opts && opts.length > 0) {
-          picks.push(opts[Math.floor(Math.random() * opts.length)]);
-        } else {
-          picks.push(null);
-        }
-      });
-
-      // Re-do cleanly: one pass
-      let finalPlain = '';
-      let finalHtml = '';
-      let pi = 0;
-      let last = 0;
-      const rx = /\[([^\]]+)\]/g;
-      let rm;
-      while ((rm = rx.exec(template)) !== null) {
-        const before = template.slice(last, rm.index);
-        finalPlain += before;
-        finalHtml += escHtml(before);
-        const key = rm[1].trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (opts && opts.length > 0) {
-          const pick = opts[Math.floor(Math.random() * opts.length)];
-          finalPlain += pick;
-          finalHtml += `<span class="filled">${escHtml(pick)}</span>`;
-        } else {
-          finalPlain += rm[0];
-          finalHtml += escHtml(rm[0]);
-        }
-        last = rm.index + rm[0].length;
-      }
-      finalPlain += template.slice(last);
-      finalHtml += escHtml(template.slice(last));
-
-      const div = document.createElement('div');
-      div.className = 'output-prompt';
-      div.innerHTML = `
-        <span class="num">${i + 1}</span>
-        <span class="text">${finalHtml}</span>
-        <span class="copy-toast">Copied</span>`;
-      div.dataset.plain = finalPlain;
-      div.addEventListener('click', () => copyOne(div));
-      outputEl.appendChild(div);
-    }
-
-    outputActionsEl.style.display = 'flex';
+    cursor = m.index + m[0].length;
   }
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-
-  function copyOne(div) {
-    navigator.clipboard.writeText(div.dataset.plain).then(() => {
-      div.classList.add('copied');
-      setTimeout(() => div.classList.remove('copied'), 1200);
-    });
-  }
-
-  function copyAll() {
-    const all = [...outputEl.querySelectorAll('.output-prompt')]
-      .map(d => d.dataset.plain).join('\n');
-    navigator.clipboard.writeText(all);
-  }
-
-  function clearOutput() {
-    outputEl.innerHTML = '';
-    outputActionsEl.style.display = 'none';
-  }
-
-  // Keyboard shortcut
-  document.addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && !generateBtn.disabled) {
-      generate();
+  // Actually just highlight picks in the result
+  let highlightedResult = '';
+  let srcCursor = 0;
+  const srcRegex = /\[([^\]]+)\]/g;
+  let resCursor = 0;
+  let sm;
+  // Build side-by-side
+  const picks = [];
+  template.replace(/\[([^\]]+)\]/g, (match, inner, offset) => {
+    const key = inner.trim().toLowerCase();
+    const opts = optionsMap[key];
+    if (opts && opts.length > 0) {
+      picks.push(opts[Math.floor(Math.random() * opts.length)]);
+    } else {
+      picks.push(null);
     }
   });
 
-  // Export: JSON → base64 → .wcb file download
-  function exportConfig() {
-    const data = {
-      _wcb: 1,
-      template: templateEl.value,
-      wildcards: {}
-    };
-    for (const name of currentWildcards) {
-      data.wildcards[name.toLowerCase()] = wildcardOptions[name.toLowerCase()] || '';
+  // Re-do cleanly: one pass
+  let finalPlain = '';
+  let finalHtml = '';
+  let pi = 0;
+  let last = 0;
+  const rx = /\[([^\]]+)\]/g;
+  let rm;
+  while ((rm = rx.exec(template)) !== null) {
+    const before = template.slice(last, rm.index);
+    finalPlain += before;
+    finalHtml += escHtml(before);
+    const key = rm[1].trim().toLowerCase();
+    const opts = optionsMap[key];
+    if (opts && opts.length > 0) {
+      const pick = opts[Math.floor(Math.random() * opts.length)];
+      finalPlain += pick;
+      finalHtml += `<span class="filled">${escHtml(pick)}</span>`;
+    } else {
+      finalPlain += rm[0];
+      finalHtml += escHtml(rm[0]);
     }
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
-    const blob = new Blob([encoded], { type: 'application/octet-stream' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'prompt-config.wcb';
-    a.click();
-    URL.revokeObjectURL(a.href);
+    last = rm.index + rm[0].length;
   }
+  finalPlain += template.slice(last);
+  finalHtml += escHtml(template.slice(last));
 
-  // Import: .wcb file → base64 decode → restore state
-  const importFileEl = document.getElementById('import-file');
+  const div = document.createElement('div');
+  div.className = 'output-prompt';
+  div.innerHTML = `
+    <span class="num">${i + 1}</span>
+    <span class="text">${finalHtml}</span>
+    <span class="copy-toast">Copied</span>`;
+  div.dataset.plain = finalPlain;
+  div.addEventListener('click', () => copyOne(div));
+  outputEl.appendChild(div);
+}
 
-  function importConfig() {
-    importFileEl.value = '';
-    importFileEl.click();
-  }
+outputActionsEl.style.display = 'flex';
+```
 
-  importFileEl.addEventListener('change', e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const decoded = decodeURIComponent(escape(atob(reader.result.trim())));
-        const data = JSON.parse(decoded);
-        if (!data._wcb) throw new Error('Not a valid config');
+}
 
-        // Restore template
-        templateEl.value = data.template || '';
+function escHtml(s) {
+return s.replace(/&/g,’&’).replace(/</g,’<’).replace(/>/g,’>’);
+}
 
-        // Restore wildcard options
-        wildcardOptions = {};
-        if (data.wildcards) {
-          for (const [key, val] of Object.entries(data.wildcards)) {
-            wildcardOptions[key.toLowerCase()] = val;
-          }
-        }
+function copyOne(div) {
+navigator.clipboard.writeText(div.dataset.plain).then(() => {
+div.classList.add(‘copied’);
+setTimeout(() => div.classList.remove(‘copied’), 1200);
+});
+}
 
-        // Re-parse and render
-        currentWildcards = parseWildcards(templateEl.value);
-        renderWildcards(currentWildcards);
-      } catch (err) {
-        alert('Could not read this file. Make sure it\'s a valid .wcb config.');
+function copyAll() {
+const all = […outputEl.querySelectorAll(’.output-prompt’)]
+.map(d => d.dataset.plain).join(’\n’);
+navigator.clipboard.writeText(all);
+}
+
+function clearOutput() {
+outputEl.innerHTML = ‘’;
+outputActionsEl.style.display = ‘none’;
+}
+
+// Keyboard shortcut
+document.addEventListener(‘keydown’, e => {
+if ((e.metaKey || e.ctrlKey) && e.key === ‘Enter’ && !generateBtn.disabled) {
+generate();
+}
+});
+
+// Export: JSON → base64 → .wcb file download
+function exportConfig() {
+const data = {
+_wcb: 1,
+template: templateEl.value,
+wildcards: {}
+};
+for (const name of currentWildcards) {
+data.wildcards[name.toLowerCase()] = wildcardOptions[name.toLowerCase()] || ‘’;
+}
+const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+const blob = new Blob([encoded], { type: ‘application/octet-stream’ });
+const a = document.createElement(‘a’);
+a.href = URL.createObjectURL(blob);
+a.download = ‘prompt-config.wcb’;
+a.click();
+URL.revokeObjectURL(a.href);
+}
+
+// Import: .wcb file → base64 decode → restore state
+const importFileEl = document.getElementById(‘import-file’);
+
+function importConfig() {
+importFileEl.value = ‘’;
+importFileEl.click();
+}
+
+importFileEl.addEventListener(‘change’, e => {
+const file = e.target.files[0];
+if (!file) return;
+const reader = new FileReader();
+reader.onload = () => {
+try {
+const decoded = decodeURIComponent(escape(atob(reader.result.trim())));
+const data = JSON.parse(decoded);
+if (!data._wcb) throw new Error(‘Not a valid config’);
+
+```
+    // Restore template
+    templateEl.value = data.template || '';
+
+    // Restore wildcard options
+    wildcardOptions = {};
+    if (data.wildcards) {
+      for (const [key, val] of Object.entries(data.wildcards)) {
+        wildcardOptions[key.toLowerCase()] = val;
       }
-    };
-    reader.readAsText(file);
-  });
+    }
+
+    // Re-parse and render
+    currentWildcards = parseWildcards(templateEl.value);
+    renderWildcards(currentWildcards);
+  } catch (err) {
+    alert('Could not read this file. Make sure it\'s a valid .wcb config.');
+  }
+};
+reader.readAsText(file);
+```
+
+});
 </script>
 
 </body>
