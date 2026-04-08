@@ -164,6 +164,8 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .wildcard-name {
@@ -177,10 +179,86 @@
     border-radius: 6px;
   }
 
+  .wildcard-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   .wildcard-count {
     font-size: 0.75rem;
     color: var(--text-dim);
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Mode toggle */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    height: 26px;
+  }
+
+  .mode-toggle button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 0 10px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .mode-toggle button.active {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .mode-toggle button:not(.active):hover {
+    color: var(--text);
+    background: var(--border);
+  }
+
+  /* Seq indicator */
+  .seq-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+  }
+
+  .seq-indicator .pos {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .seq-reset {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .seq-reset:hover {
+    color: var(--red);
+    border-color: var(--red);
   }
 
   .wildcard-input {
@@ -457,7 +535,9 @@
 
   // State
   let currentWildcards = [];          // ordered list of names
-  let wildcardOptions = {};            // name -> newline-separated string (persisted across re-parses)
+  let wildcardOptions = {};            // name -> newline-separated string
+  let wildcardMode = {};               // name -> 'random' | 'sequential'
+  let wildcardSeqIndex = {};           // name -> current index in sequence
 
   // Parse wildcards from template
   function parseWildcards(text) {
@@ -489,14 +569,30 @@
 
     wildcardCountEl.textContent = names.length;
 
-    // Build HTML
     wildcardsEl.innerHTML = names.map(name => {
-      const val = wildcardOptions[name.toLowerCase()] || '';
+      const key = name.toLowerCase();
+      const val = wildcardOptions[key] || '';
+      const mode = wildcardMode[key] || 'random';
+      const seqIdx = wildcardSeqIndex[key] || 0;
+      const opts = parseOptions(val);
+      const isSeq = mode === 'sequential';
+
       return `
         <div class="wildcard-card">
           <div class="wildcard-header">
             <span class="wildcard-name">[${name}]</span>
-            <span class="wildcard-count" id="count-${css(name)}">0 options</span>
+            <div class="wildcard-header-right">
+              ${isSeq ? `
+                <div class="seq-indicator" id="seq-ind-${css(name)}">
+                  <span>pos <span class="pos">${seqIdx % (opts.length || 1)}/${opts.length}</span></span>
+                  <button class="seq-reset" onclick="resetSeq('${esc(key)}')" title="Reset to start">↺</button>
+                </div>` : ''}
+              <div class="mode-toggle">
+                <button class="${mode === 'random' ? 'active' : ''}" onclick="setMode('${esc(key)}', 'random')">RND</button>
+                <button class="${mode === 'sequential' ? 'active' : ''}" onclick="setMode('${esc(key)}', 'sequential')">SEQ</button>
+              </div>
+              <span class="wildcard-count" id="count-${css(name)}">${opts.length} option${opts.length !== 1 ? 's' : ''}</span>
+            </div>
           </div>
           <textarea class="wildcard-input"
             data-name="${esc(name)}"
@@ -506,17 +602,43 @@
         </div>`;
     }).join('');
 
-    // Attach listeners & update counts
+    // Attach listeners
     wildcardsEl.querySelectorAll('.wildcard-input').forEach(input => {
-      updateOptionCount(input);
       input.addEventListener('input', () => {
-        wildcardOptions[input.dataset.name.toLowerCase()] = input.value;
+        const key = input.dataset.name.toLowerCase();
+        wildcardOptions[key] = input.value;
         updateOptionCount(input);
+        // If options list changed length, reset seq to keep it sane
+        updateSeqIndicator(key);
         checkReady();
       });
     });
 
     checkReady();
+  }
+
+  function setMode(key, mode) {
+    wildcardMode[key] = mode;
+    if (mode === 'sequential' && wildcardSeqIndex[key] == null) {
+      wildcardSeqIndex[key] = 0;
+    }
+    renderWildcards(currentWildcards);
+  }
+
+  function resetSeq(key) {
+    wildcardSeqIndex[key] = 0;
+    updateSeqIndicator(key);
+  }
+
+  function updateSeqIndicator(key) {
+    // find the matching name for css id
+    const name = currentWildcards.find(n => n.toLowerCase() === key);
+    if (!name) return;
+    const el = document.getElementById('seq-ind-' + css(name));
+    if (!el) return;
+    const opts = parseOptions(wildcardOptions[key] || '');
+    const idx = (wildcardSeqIndex[key] || 0) % (opts.length || 1);
+    el.querySelector('.pos').textContent = `${idx}/${opts.length}`;
   }
 
   function updateOptionCount(input) {
@@ -540,6 +662,20 @@
   // Helpers
   function esc(s) { return s.replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   function css(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, '-'); }
+
+  // Pick function: respects mode
+  function pick(key, opts) {
+    if (!opts || opts.length === 0) return null;
+    const mode = wildcardMode[key] || 'random';
+    if (mode === 'sequential') {
+      let idx = wildcardSeqIndex[key] || 0;
+      const val = opts[idx % opts.length];
+      wildcardSeqIndex[key] = idx + 1;
+      return val;
+    } else {
+      return opts[Math.floor(Math.random() * opts.length)];
+    }
+  }
 
   // Template input handler
   let debounce;
@@ -568,54 +704,8 @@
     outputEl.innerHTML = '';
 
     for (let i = 0; i < count; i++) {
-      const result = template.replace(/\[([^\]]+)\]/g, (match, inner) => {
-        const key = inner.trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (!opts || opts.length === 0) return match;
-        return opts[Math.floor(Math.random() * opts.length)];
-      });
-
-      // Build highlighted version
-      let highlighted = template;
-      const parts = [];
-      let cursor = 0;
-      const regex = /\[([^\]]+)\]/g;
-      let m;
-      while ((m = regex.exec(template)) !== null) {
-        parts.push(escHtml(template.slice(cursor, m.index)));
-        const key = m[1].trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (opts && opts.length > 0) {
-          const pick = result.slice(
-            result.indexOf(parts.length > 0 ? '' : '') // we'll just re-generate for highlight
-          );
-          // Simpler: re-pick for display
-        }
-        cursor = m.index + m[0].length;
-      }
-
-      // Actually just highlight picks in the result
-      let highlightedResult = '';
-      let srcCursor = 0;
-      const srcRegex = /\[([^\]]+)\]/g;
-      let resCursor = 0;
-      let sm;
-      // Build side-by-side
-      const picks = [];
-      template.replace(/\[([^\]]+)\]/g, (match, inner, offset) => {
-        const key = inner.trim().toLowerCase();
-        const opts = optionsMap[key];
-        if (opts && opts.length > 0) {
-          picks.push(opts[Math.floor(Math.random() * opts.length)]);
-        } else {
-          picks.push(null);
-        }
-      });
-
-      // Re-do cleanly: one pass
       let finalPlain = '';
       let finalHtml = '';
-      let pi = 0;
       let last = 0;
       const rx = /\[([^\]]+)\]/g;
       let rm;
@@ -626,9 +716,9 @@
         const key = rm[1].trim().toLowerCase();
         const opts = optionsMap[key];
         if (opts && opts.length > 0) {
-          const pick = opts[Math.floor(Math.random() * opts.length)];
-          finalPlain += pick;
-          finalHtml += `<span class="filled">${escHtml(pick)}</span>`;
+          const val = pick(key, opts);
+          finalPlain += val;
+          finalHtml += `<span class="filled">${escHtml(val)}</span>`;
         } else {
           finalPlain += rm[0];
           finalHtml += escHtml(rm[0]);
@@ -650,6 +740,11 @@
     }
 
     outputActionsEl.style.display = 'flex';
+
+    // Update seq indicators after generation
+    for (const name of currentWildcards) {
+      updateSeqIndicator(name.toLowerCase());
+    }
   }
 
   function escHtml(s) {
@@ -686,10 +781,15 @@
     const data = {
       _wcb: 1,
       template: templateEl.value,
-      wildcards: {}
+      wildcards: {},
+      modes: {},
+      seqIndexes: {}
     };
     for (const name of currentWildcards) {
-      data.wildcards[name.toLowerCase()] = wildcardOptions[name.toLowerCase()] || '';
+      const key = name.toLowerCase();
+      data.wildcards[key] = wildcardOptions[key] || '';
+      data.modes[key] = wildcardMode[key] || 'random';
+      data.seqIndexes[key] = wildcardSeqIndex[key] || 0;
     }
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
     const blob = new Blob([encoded], { type: 'application/octet-stream' });
@@ -718,18 +818,28 @@
         const data = JSON.parse(decoded);
         if (!data._wcb) throw new Error('Not a valid config');
 
-        // Restore template
         templateEl.value = data.template || '';
 
-        // Restore wildcard options
         wildcardOptions = {};
+        wildcardMode = {};
+        wildcardSeqIndex = {};
+
         if (data.wildcards) {
           for (const [key, val] of Object.entries(data.wildcards)) {
             wildcardOptions[key.toLowerCase()] = val;
           }
         }
+        if (data.modes) {
+          for (const [key, val] of Object.entries(data.modes)) {
+            wildcardMode[key.toLowerCase()] = val;
+          }
+        }
+        if (data.seqIndexes) {
+          for (const [key, val] of Object.entries(data.seqIndexes)) {
+            wildcardSeqIndex[key.toLowerCase()] = val;
+          }
+        }
 
-        // Re-parse and render
         currentWildcards = parseWildcards(templateEl.value);
         renderWildcards(currentWildcards);
       } catch (err) {
